@@ -11,7 +11,7 @@
   width: 80px;
 }
 
-button {
+.BuildControl button {
   display: block;
   width: 80px;
   border: 1px solid #702e05;
@@ -23,18 +23,29 @@ button {
   color: white;
 }
 
-.Add {
+.BuildControl button:disabled {
+  background-color: #9e8665;
+  border: 1px solid #7e7365;
+  color: #ccc;
+}
+
+.BuildControl button:hover:disabled {
+  background-color: #beab92;
+  cursor: not-allowed;
+}
+
+.BuildControl .Add {
   background-color: #bf3813;
 }
 
-.Add:hover, .Add:active {
+.BuildControl .Add:hover, .BuildControl .Add:active {
   background-color: #c45e38;
 }
 
-.Less {
+.BuildControl .Less {
   background-color: #b8752a;
 }
 
-.Less:hover, .Less:active {
+.BuildControl .Less:hover, .BuildControl .Less:active {
   background-color: #d38f42;
 }

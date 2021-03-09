@@ -10,16 +10,47 @@ class BurgerBuilder extends Component {
     ingredients: {
       salad: 0,
       bacon: 0,
-      meat: 0,
-      cheese: 0
-    }
+      cheese: 0,
+      meat: 0
+    },
+    disabled: true,
   }
-  
+
+  addIngredientHandler (type) {
+    const oldCount = this.state.ingredients[type];
+    const updatedCount = oldCount + 1;
+
+    let updateIngredients = {...this.state.ingredients};
+    updateIngredients[type] = updatedCount;
+
+    this.setState({ingredients: updateIngredients});
+  }
+
+  removeIngredientHandler (type) {
+    const oldCount = this.state.ingredients[type];
+    const updatedCount = oldCount - 1;
+
+    let updateIngredients = {...this.state.ingredients};
+    updateIngredients[type] = updatedCount;
+
+    this.setState({ingredients: updateIngredients, disabled: false});
+  }
+
   render () {
+
+    const disabledInfo = {...this.state.ingredients};
+
+    for (let key in disabledInfo) {
+      disabledInfo[key] = disabledInfo[key] <= 0;
+    }
+
     return (
       <Aux>
         <Burger ingredients={this.state.ingredients} />
-        <BuildControls />
+        <BuildControls 
+          addIngredient={(event) => this.addIngredientHandler(event)}
+          removeIngredient={(event) => this.removeIngredientHandler(event)}
+          disabled={disabledInfo} />
       </Aux>
     );
   }
