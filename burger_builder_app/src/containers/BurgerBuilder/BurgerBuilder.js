@@ -4,6 +4,13 @@ import Aux from '../../hoc/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 
+const price = {
+  salad: 0.3,
+  bacon: 0.6,
+  cheese: 0.7,
+  meat: 0.5
+}
+
 class BurgerBuilder extends Component {
 
   state = {
@@ -13,7 +20,7 @@ class BurgerBuilder extends Component {
       cheese: 0,
       meat: 0
     },
-    disabled: true,
+    totalPrice: 0,
   }
 
   addIngredientHandler (type) {
@@ -23,7 +30,10 @@ class BurgerBuilder extends Component {
     let updateIngredients = {...this.state.ingredients};
     updateIngredients[type] = updatedCount;
 
-    this.setState({ingredients: updateIngredients});
+    const oldPrice = this.state.totalPrice;
+    const updatedPrice = oldPrice + price[type];
+
+    this.setState({ingredients: updateIngredients, totalPrice: updatedPrice});
   }
 
   removeIngredientHandler (type) {
@@ -33,7 +43,10 @@ class BurgerBuilder extends Component {
     let updateIngredients = {...this.state.ingredients};
     updateIngredients[type] = updatedCount;
 
-    this.setState({ingredients: updateIngredients, disabled: false});
+    const oldPrice = this.state.totalPrice;
+    const updatedPrice = oldPrice - price[type];
+
+    this.setState({ingredients: updateIngredients, totalPrice: updatedPrice});
   }
 
   render () {
@@ -50,7 +63,8 @@ class BurgerBuilder extends Component {
         <BuildControls 
           addIngredient={(event) => this.addIngredientHandler(event)}
           removeIngredient={(event) => this.removeIngredientHandler(event)}
-          disabled={disabledInfo} />
+          disabled={disabledInfo}
+          price={this.state.totalPrice} />
       </Aux>
     );
   }
