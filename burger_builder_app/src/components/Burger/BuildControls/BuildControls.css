@@ -8,3 +8,32 @@
   box-shadow: 0 2px 1px #ccc;
   padding: 10px 0; /* top-bottom --> 10px, left-right ==> 0 */
 }
+
+.OrderButton {
+  border: 1px solid #966909;
+  box-shadow: 2px 2px 2px #966909;
+  padding: 15px 30px;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1.2em;
+  background-color: #dad735;
+  color: #966909;
+}
+
+.OrderButton:hover, .OrderButton:active {
+  background-color: #a0db41;
+}
+
+.OrderButton:disabled {
+  background-color: rgb(160, 158, 158);
+  color: rgb(112, 110, 110);
+  border: 1px solid #8b8b8a;
+  box-shadow: 2px 2px 2px #707070;
+  cursor: not-allowed;
+}
+
+.OrderButton:disabled:hover {
+  background-color: rgb(197, 197, 197);
+}
