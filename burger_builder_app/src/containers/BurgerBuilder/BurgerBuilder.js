@@ -23,7 +23,8 @@ class BurgerBuilder extends Component {
       meat: 0
     },
     totalPrice: 0,
-    purchasing: null
+    purchasable: null,
+    purchasing: false
   }
 
   updatePurchaseHandler (updateIngredients) {
@@ -37,7 +38,7 @@ class BurgerBuilder extends Component {
         return add+ele;
       },0);
     
-    this.setState({ purchasing: sum > 0 })
+    this.setState({ purchasable: sum > 0 })
 
     // console.log(sum);
   }
@@ -70,6 +71,11 @@ class BurgerBuilder extends Component {
     this.updatePurchaseHandler(updateIngredients);
   }
 
+  // whenever Order Now button is clicked, this method should be triggred
+  purchaseHandler = () => {
+    this.setState({purchasing: true});
+  }
+
   render () {
     const disabledInfo = {...this.state.ingredients};
 
@@ -79,18 +85,19 @@ class BurgerBuilder extends Component {
 
     return (
       <Aux>
-        <Modal>
+        <Modal show={this.state.purchasing}>
           <OrderSummary  ingredients={this.state.ingredients} price={this.state.totalPrice} />
         </Modal>
 
         <Burger ingredients={this.state.ingredients} />
-        
+
         <BuildControls 
           addIngredient={(event) => this.addIngredientHandler(event)}
           removeIngredient={(event) => this.removeIngredientHandler(event)}
           disabled={disabledInfo}
           price={this.state.totalPrice}
-          purchasable={this.state.purchasing} />
+          purchasable={this.state.purchasable}
+          showModal={this.purchaseHandler} />
       </Aux>
     );
   }

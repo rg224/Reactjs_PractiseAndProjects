@@ -19,7 +19,7 @@ const orderSummary = (props) => {
         {ingredientSummary}
       </ul>
       <p>Total Price: ${props.price.toFixed(2)}</p>
-      
+
       {/* <p>Salad: x</p>
       <p>Cheese: y</p>
       <p>Meat: z</p>
