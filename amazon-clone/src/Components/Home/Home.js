@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Product from '../Product/Product';
+
 const home = () => {
   return (
     <HomeContainer>
       <Banner></Banner>
-
+      
       <Content>
-        CONTENT PART
+        <Product />
+        <Product />
       </Content>
     </HomeContainer>
   );
@@ -27,6 +30,7 @@ const Banner = styled.div `
   background-position: center;
   background-size: cover;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  // z-index: 1;
 ` 
 
 const Content = styled.div `
@@ -34,4 +38,5 @@ const Content = styled.div `
   padding-left: 10px;
   padding-right: 10px;
   margin-top: -260px;
+  display: flex;
 ` 
