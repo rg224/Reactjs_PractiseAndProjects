@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import styled from 'styled-components'; // imported package
 import AmazonLogo from '../../assets/amazon-logo.png';
 import SearchIcon from '@material-ui/icons/Search';
@@ -10,9 +12,11 @@ const header = () => {
     <div>
       <Header>
         
-        <HeaderLogo>
-          <img src={AmazonLogo} alt="Amazon Logo" />
-        </HeaderLogo>
+        <Link to="/">
+          <HeaderLogo>
+            <img src={AmazonLogo} alt="Amazon Logo" />
+          </HeaderLogo>
+        </Link>
 
         <HeaderOptionAddress>
           <LocationOnIcon />
@@ -41,8 +45,10 @@ const header = () => {
           </HeaderOption>
 
           <HeaderOptionCart>
-            <ShoppingCartIcon />
-            <CartCount>4</CartCount>
+            <Link to="/cart">
+              <ShoppingCartIcon />
+              <CartCount>4</CartCount>
+            </Link>
           </HeaderOptionCart>
         </HeaderNavItems>
 
@@ -116,7 +122,8 @@ const HeaderSearchIcon = styled.div `
 `
 
 const HeaderNavItems = styled.div ` 
-display: flex;
+  display: flex;
+  align-items: center;
 `
 
 const HeaderOption = styled.div `
@@ -126,8 +133,14 @@ const HeaderOption = styled.div `
 
 const HeaderOptionCart = styled.div `
   display: flex;
-  align-items: center;
-  padding-right: 9px;
+
+  a {
+    display: flex;
+    align-items: center;
+    padding-right: 9px;
+    color: white;
+    text-decoration: none;
+  }
 `
 
 const CartCount = styled.div `
