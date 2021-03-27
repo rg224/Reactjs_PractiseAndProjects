@@ -16,7 +16,7 @@ const product = () => {
         ⭐⭐⭐⭐⭐
       </Rating>
 
-      <ProductImage src="https://images-na.ssl-images-amazon.com/images/I/81oFAZ9N6bL._SL1500_.jpg" />
+      <ProductImage src="https://images-na.ssl-images-amazon.com/images/I/811aBwuSuIL._SL1500_.jpg" />
       
       <AddToCartButton>Add to Cart</AddToCartButton>
     </ProductContainer>
